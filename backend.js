@@ -87,7 +87,7 @@ app.delete('/users/:id', (req, res) => {
     else {
         result = {users_list: result};
         deleteUserByID(id)
-        res.status(200).end();
+        res.status(204).end();
     }
 });
 
