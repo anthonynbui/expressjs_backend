@@ -75,6 +75,7 @@ app.get('/users/:id', (req, res) => {
 
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
+    userToAdd.id = generateID();
     addUser(userToAdd);
     res.status(201).end();
 });
@@ -90,6 +91,11 @@ app.delete('/users/:id', (req, res) => {
         res.status(204).end();
     }
 });
+
+function generateID() {
+    const randID = Math.floor(Math.random() * 100).toString();
+    return randID;
+}
 
 function addUser(user){
     users['users_list'].push(user);
